@@ -1,7 +1,3 @@
-/* =====================================================
-   ✨ Malla Curricular Rosita — Estilos Globales
-===================================================== */
-
 body {
   font-family: "Poppins", sans-serif;
   background: #fdeef4;
@@ -22,11 +18,7 @@ h1 {
   align-items: center;
 }
 
-
-/* =====================================================
-   SELECTOR SUPERIOR
-===================================================== */
-
+/* SELECTOR SUPERIOR */
 .top-controls {
   display: flex;
   justify-content: center;
@@ -42,11 +34,9 @@ h1 {
   outline: none;
 }
 
-
 /* =====================================================
-   LAYOUT: Catálogo + Contenedor
+   LAYOUT
 ===================================================== */
-
 #main-layout {
   display: grid;
   grid-template-columns: 350px 1fr;
@@ -60,11 +50,7 @@ h1 {
   }
 }
 
-
-/* =====================================================
-   CATÁLOGO
-===================================================== */
-
+/* CATÁLOGO */
 #catalog {
   display: none;
   flex-direction: column;
@@ -99,18 +85,14 @@ h1 {
   background: white;
 }
 
-/* Contenedor de cursos del catálogo */
+/* Contenedor del catálogo */
 #catalog-courses {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-
-/* =====================================================
-   CONTENEDOR DE SEMESTRES
-===================================================== */
-
+/* SEMESTRES */
 #app {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
@@ -119,11 +101,7 @@ h1 {
   box-sizing: border-box;
 }
 
-
-/* =====================================================
-   TARJETA DE SEMESTRE
-===================================================== */
-
+/* TARJETA SEMESTRE */
 .semester {
   background: #ffffffdd;
   border: 2px solid #f3a8c2;
@@ -146,11 +124,7 @@ h1 {
   color: #a53b68;
 }
 
-
-/* =====================================================
-   CURSOS
-===================================================== */
-
+/* CURSOS */
 .course {
   padding: 12px 14px;
   border-radius: 10px;
@@ -161,35 +135,27 @@ h1 {
   transition: 0.15s ease-in-out;
 }
 
-/* ✅ Cursadas */
 .course.completed {
   background: #f09bb8;
   border-color: #e76f93;
 }
 
-/* ✅ Disponibles */
 .course.available {
   background: #f7b8ce;
   border-color: #d27da1;
 }
 
-/* ❌ No desbloqueadas */
 .course.locked {
   background: #fff;
   border-color: #d8bfd0;
   opacity: 0.55;
 }
 
-/* Hover */
 .course:hover {
   transform: scale(1.03);
 }
 
-
-/* =====================================================
-   DRAG & DROP
-===================================================== */
-
+/* Drag styling */
 .dragover {
   border: 2px dashed #e76f93 !important;
   background: #ffe6ef !important;
