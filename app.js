@@ -4,7 +4,7 @@ let data = {};
 let completed = new Set(JSON.parse(localStorage.getItem("completedCourses") || "[]"));
 let userPlan = JSON.parse(localStorage.getItem("userPlan") || "null");
 
-// === INIT =====================================================
+// === INIT ======================================================
 
 async function load() {
   data = await fetch("curricula.json").then(r => r.json());
