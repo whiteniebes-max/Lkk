@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Malla Curricular — Rosita Planner</title>
+  <title>Malla Curricular Rosita — Planner</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 
@@ -20,7 +20,7 @@
 
   <div id="layout">
 
-    <!-- Catálogo -->
+    <!-- ✅ CATÁLOGO SOLO PARA MI PLAN -->
     <div id="catalog">
       <div id="catalog-filters" style="display:none">
         <h2>Catálogo</h2>
@@ -31,12 +31,17 @@
           <option value="locked">Bloqueadas</option>
         </select>
       </div>
+
+      <!-- ✅ Aquí se cargan cursos -->
+      <div id="catalog-courses"></div>
     </div>
 
-    <!-- Semestres --->
+    <!-- ✅ Semestres -->
     <div id="app"></div>
   </div>
 
+  <script src="curricula.js"></script>
   <script src="app.js"></script>
+
 </body>
 </html>
