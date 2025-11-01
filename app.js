@@ -19,11 +19,14 @@ async function load() {
     localStorage.setItem("userPlan", JSON.stringify(userPlan));
   }
 
+  document.getElementById("viewMode").onchange = render;
+
+  // ✅ Solo existe si estamos en Mi plan
+  let cf = document.getElementById("catalogFilter");
+  if (cf) cf.onchange = render;
+
   render();
 }
-
-document.getElementById("viewMode").onchange = render;
-document.getElementById("catalogFilter").onchange = render;
 
 
 // =====================================================
@@ -73,6 +76,7 @@ function preloadCompleted() {
 }
 
 
+
 // =====================================================
 //                  RENDER
 // =====================================================
@@ -83,26 +87,20 @@ function render() {
   let app = document.getElementById("app");
   let cat = document.getElementById("catalog");
   let cFilters = document.getElementById("catalog-filters");
+  let cCourses = document.getElementById("catalog-courses");
 
   app.innerHTML = "";
-  cat.innerHTML = "";
+  cCourses.innerHTML = "";
 
-  // ✅ Catálogo solo en Mi plan
+  // ✅ Mi plan
   if (mode === "miplan") {
 
-    // mostrar columna catálogo
     cat.classList.add("visible");
-
-    // mostrar filtros
     cFilters.style.display = "block";
 
-    // pintar catálogo
     renderCatalog();
-
-    // pintar semestres
     displaySemesters(userPlan, true);
 
-    // botón agregar semestre
     let btn = document.createElement("button");
     btn.textContent = "➕ Agregar semestre";
     btn.onclick = () => addSemester();
@@ -111,11 +109,10 @@ function render() {
     return;
   }
 
-  // ✅ Cuando NO es mi plan → ocultar catálogo
+  // ✅ Ocultar catálogo para los pensums
   cat.classList.remove("visible");
   cFilters.style.display = "none";
 
-  // pintar la carrera normal
   if (mode === "bioingenieria") {
     displaySemesters(data.bioingenieria, false);
     return;
@@ -128,17 +125,18 @@ function render() {
 }
 
 
+
 // =====================================================
 //              CATÁLOGO
 // =====================================================
 
 function renderCatalog() {
-  let cat = document.getElementById("catalog");
+  const container = document.getElementById("catalog-courses");
+  container.innerHTML = "";
 
   let filter = document.getElementById("catalogFilter").value;
   let all = getAllCourses();
 
-  // aplicar filtro
   all = all.filter(c => {
     if (filter === "available") return !completed.has(c.code) && canTake(c);
     if (filter === "completed") return completed.has(c.code);
@@ -146,28 +144,13 @@ function renderCatalog() {
     return true;
   });
 
-  // generar
   all.forEach(c => {
     let el = renderCourse(c, null, true);
     el.ondragstart = e => dragStart(e, c.code, null);
-    cat.appendChild(el);
+    container.appendChild(el);
   });
 }
 
-function getAllCourses() {
-  let arr = [];
-
-  // bio
-  Object.values(data.bioingenieria).forEach(list => arr.push(...list));
-  // cd
-  Object.values(data.cienciadatos).forEach(list => arr.push(...list));
-
-  // evitar duplicados
-  let map = {};
-  arr.forEach(c => map[c.code] = c);
-
-  return Object.values(map);
-}
 
 
 // =====================================================
@@ -195,6 +178,7 @@ function displaySemesters(obj, editable) {
   }
 }
 
+
 function renderCourse(c, sem, editable) {
   let el = document.createElement("div");
   el.className = "course";
@@ -214,6 +198,7 @@ function renderCourse(c, sem, editable) {
 
   return el;
 }
+
 
 
 // =====================================================
@@ -256,6 +241,7 @@ function moveCourse(code, fromSem, toSem) {
 }
 
 
+
 // =====================================================
 //              LÓGICA
 // =====================================================
@@ -273,6 +259,17 @@ function toggleCompleted(code) {
   render();
 }
 
+function getAllCourses() {
+  let res = [];
+  ["bioingenieria","cienciadatos"].forEach(area => {
+    for (let sem in data[area]) {
+      res.push(...data[area][sem]);
+    }
+  });
+  return res;
+}
+
+
 function findCourse(code) {
   for (let sem in data.bioingenieria) {
     let c = data.bioingenieria[sem].find(x => x.code === code);
@@ -286,6 +283,7 @@ function findCourse(code) {
 }
 
 
+
 // =====================================================
 //              NUEVO SEMESTRE
 // =====================================================
@@ -296,6 +294,7 @@ function addSemester() {
   localStorage.setItem("userPlan", JSON.stringify(userPlan));
   render();
 }
+
 
 
 // START
