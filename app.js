@@ -23,6 +23,7 @@ async function load() {
 }
 
 document.getElementById("viewMode").onchange = render;
+document.getElementById("catalogFilter").onchange = render;
 
 
 // =====================================================
@@ -73,7 +74,7 @@ function preloadCompleted() {
 
 
 // =====================================================
-//              RENDER
+//                  RENDER
 // =====================================================
 
 function render() {
@@ -81,23 +82,14 @@ function render() {
 
   let app = document.getElementById("app");
   let cat = document.getElementById("catalog");
+  let cFilters = document.getElementById("catalog-filters");
 
   app.innerHTML = "";
   cat.innerHTML = "";
 
-  if (mode === "bioingenieria") {
-    renderCatalog();
-    displaySemesters(data.bioingenieria, false);
-    return;
-  }
-
-  if (mode === "cienciadatos") {
-    renderCatalog();
-    displaySemesters(data.cienciadatos, false);
-    return;
-  }
-
+  // ✅ Catálogo solo en Mi plan
   if (mode === "miplan") {
+    cFilters.style.display = "block";
     renderCatalog();
     displaySemesters(userPlan, true);
 
@@ -105,6 +97,19 @@ function render() {
     btn.textContent = "➕ Agregar semestre";
     btn.onclick = () => addSemester();
     app.appendChild(btn);
+    return;
+  }
+
+  // ✅ Cuando NO es mi plan → NO catálogo
+  cFilters.style.display = "none";
+
+  if (mode === "bioingenieria") {
+    displaySemesters(data.bioingenieria, false);
+    return;
+  }
+
+  if (mode === "cienciadatos") {
+    displaySemesters(data.cienciadatos, false);
     return;
   }
 }
@@ -116,10 +121,19 @@ function render() {
 
 function renderCatalog() {
   let cat = document.getElementById("catalog");
-  cat.innerHTML = "<h2>Catálogo</h2>";
 
+  let filter = document.getElementById("catalogFilter").value;
   let all = getAllCourses();
 
+  // aplicar filtro
+  all = all.filter(c => {
+    if (filter === "available") return !completed.has(c.code) && canTake(c);
+    if (filter === "completed") return completed.has(c.code);
+    if (filter === "locked") return !completed.has(c.code) && !canTake(c);
+    return true;
+  });
+
+  // generar
   all.forEach(c => {
     let el = renderCourse(c, null, true);
     el.ondragstart = e => dragStart(e, c.code, null);
@@ -229,7 +243,7 @@ function moveCourse(code, fromSem, toSem) {
 }
 
 
-// ======================================================
+// =====================================================
 //              LÓGICA
 // =====================================================
 
