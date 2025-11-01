@@ -1,7 +1,7 @@
 :root {
   --fondo: #fef7fb;
 
-  --blanco: #ffffff;        /* NO disponible */
+  --blanco: #ffffff;        /* NO disponible (locked) */
   --rosa-pastel: #f6dce9;   /* disponible NO cursada */
   --rosa-medio: #ea9ec4;    /* cursada */
 
@@ -33,6 +33,14 @@ body {
 
 #catalog h2 {
   text-align: center;
+}
+
+#catalogFilter {
+  width: 100%;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid var(--borde);
+  margin-bottom: 10px;
 }
 
 /* SEMESTRES */
