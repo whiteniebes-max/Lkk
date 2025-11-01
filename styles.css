@@ -16,20 +16,54 @@ body {
   padding: 20px;
 }
 
-.course {
-  background: var(--rosa-2);
-  border: 1px solid var(--rosa-4);
-  border-radius: 10px;
-  padding: 10px;
-  margin: 6px;
+h1 {
+  text-align: center;
+  color: var(--rosa-6);
 }
 
-.course.available {
+#controls {
+  display: flex;
+  justify-content: center;
+  margin: 15px;
+}
+
+select {
+  padding: 10px;
+  border-radius: 10px;
   background: var(--rosa-3);
+  border: 2px solid var(--rosa-4);
+}
+
+.semester {
+  padding: 10px;
+  margin: 10px;
+  border: 2px solid var(--rosa-4);
+  border-radius: 12px;
+  background: var(--rosa-2);
+}
+
+.semester h2 {
+  text-align: center;
+  margin-top: 0;
+  color: var(--rosa-6);
+}
+
+.course {
+  background: var(--rosa-3);
+  border: 1px solid var(--rosa-4);
+  border-radius: 8px;
+  padding: 8px;
+  margin: 6px;
+  cursor: grab;
 }
 
 .course.completed {
   background: var(--rosa-5);
+  color: white;
+}
+
+.course.available {
+  background: var(--rosa-4);
   color: white;
 }
 
@@ -41,4 +75,8 @@ body {
 .course:hover {
   background: var(--rosa-6);
   color: white;
+}
+
+.dragover {
+  border: 3px dashed var(--rosa-6);
 }
