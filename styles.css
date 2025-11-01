@@ -24,11 +24,16 @@ h1 {
 
 
 /* =====================================================
-   SELECTOR
+   SELECTOR SUPERIOR
 ===================================================== */
+
+.top-controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
 #viewMode {
-  margin-left: 20px;
-  margin-top: 8px;
   padding: 8px;
   border-radius: 8px;
   border: 1px solid #f3a8c2;
@@ -37,15 +42,79 @@ h1 {
   outline: none;
 }
 
+
 /* =====================================================
-   GRID PRINCIPAL
+   LAYOUT: Catálogo + Contenedor
+===================================================== */
+
+#main-layout {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  gap: 16px;
+  padding: 20px;
+}
+
+@media (max-width: 900px) {
+  #main-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* =====================================================
+   CATÁLOGO
+===================================================== */
+
+#catalog {
+  display: none;
+  flex-direction: column;
+  padding: 16px;
+  background: #ffffffdd;
+  border-radius: 12px;
+  border: 2px solid #f3a8c2;
+  box-shadow: 0 2px 4px #f4b6cc;
+}
+
+#catalog.visible {
+  display: flex;
+}
+
+#catalog h2 {
+  margin: 0 0 10px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #a53b68;
+}
+
+#catalog-filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+#catalogFilter {
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1.5px solid #f3a8c2;
+  background: white;
+}
+
+/* Contenedor de cursos del catálogo */
+#catalog-courses {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+
+/* =====================================================
+   CONTENEDOR DE SEMESTRES
 ===================================================== */
 
 #app {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
   gap: 20px;
-  padding: 20px;
   width: 100%;
   box-sizing: border-box;
 }
@@ -62,7 +131,6 @@ h1 {
   padding: 16px;
   min-height: 120px;
 
-  /* Alinear contenido parejito */
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -115,50 +183,6 @@ h1 {
 /* Hover */
 .course:hover {
   transform: scale(1.03);
-}
-
-
-/* =====================================================
-   CATALOGO
-===================================================== */
-
-#catalog {
-  display: none;
-  flex-direction: column;
-  width: 100%;
-  padding: 10px 20px 0;
-  box-sizing: border-box;
-}
-
-#catalog.visible {
-  display: flex;
-}
-
-#catalog h2 {
-  margin: 0 0 10px;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #a53b68;
-}
-
-#catalog-filters {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 10px;
-}
-
-#catalogFilter {
-  padding: 6px 10px;
-  border-radius: 8px;
-  border: 1.5px solid #f3a8c2;
-  background: white;
-}
-
-/* Contenedor de cursos del catálogo */
-#catalog-courses {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
 }
 
 
