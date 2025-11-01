@@ -37,6 +37,7 @@ h1 {
   outline: none;
 }
 
+
 /* =====================================================
    GRID PRINCIPAL
 ===================================================== */
@@ -62,7 +63,6 @@ h1 {
   padding: 16px;
   min-height: 120px;
 
-  /* Alinear contenido parejito */
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -119,15 +119,32 @@ h1 {
 
 
 /* =====================================================
-   CATALOGO
+   SECCIÓN "MI PLAN" — Layout con Catálogo a la Izquierda
 ===================================================== */
 
-#catalog {
-  display: none;
-  flex-direction: column;
+#mi-plan {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding: 20px;
   width: 100%;
-  padding: 10px 20px 0;
   box-sizing: border-box;
+}
+
+/* Columna izquierda — Catálogo */
+#catalog {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  min-width: 260px;
+  max-width: 350px;
+  background: #ffffffdd;
+  border: 2px solid #f3a8c2;
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 2px 4px #f4b6cc;
+  overflow-y: auto;
+  height: calc(100vh - 160px);
 }
 
 #catalog.visible {
@@ -141,10 +158,12 @@ h1 {
   color: #a53b68;
 }
 
+/* Filtros dentro del catálogo */
 #catalog-filters {
   display: flex;
   gap: 10px;
   margin-bottom: 10px;
+  flex-wrap: wrap;
 }
 
 #catalogFilter {
@@ -152,13 +171,32 @@ h1 {
   border-radius: 8px;
   border: 1.5px solid #f3a8c2;
   background: white;
+  width: 100%;
 }
 
-/* Contenedor de cursos del catálogo */
+/* Cursos del catálogo */
 #catalog-courses {
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+/* Scroll bonito */
+#catalog::-webkit-scrollbar {
+  width: 8px;
+}
+
+#catalog::-webkit-scrollbar-thumb {
+  background: #f3a8c2;
+  border-radius: 4px;
+}
+
+/* Columna derecha — Semestres del plan */
+#mi-plan-semesters {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
 }
 
 
