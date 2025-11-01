@@ -89,20 +89,33 @@ function render() {
 
   // ✅ Catálogo solo en Mi plan
   if (mode === "miplan") {
+
+    // mostrar columna catálogo
+    cat.classList.add("visible");
+
+    // mostrar filtros
     cFilters.style.display = "block";
+
+    // pintar catálogo
     renderCatalog();
+
+    // pintar semestres
     displaySemesters(userPlan, true);
 
+    // botón agregar semestre
     let btn = document.createElement("button");
     btn.textContent = "➕ Agregar semestre";
     btn.onclick = () => addSemester();
     app.appendChild(btn);
+
     return;
   }
 
-  // ✅ Cuando NO es mi plan → NO catálogo
+  // ✅ Cuando NO es mi plan → ocultar catálogo
+  cat.classList.remove("visible");
   cFilters.style.display = "none";
 
+  // pintar la carrera normal
   if (mode === "bioingenieria") {
     displaySemesters(data.bioingenieria, false);
     return;
