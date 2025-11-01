@@ -24,6 +24,12 @@ body {
 }
 
 #catalog {
+  width: 0;
+  overflow: hidden;
+  transition: width 0.3s;
+}
+
+#catalog.visible {
   width: 30%;
   background: var(--rosa-pastel);
   padding: 10px;
@@ -43,10 +49,11 @@ body {
   margin-bottom: 10px;
 }
 
+
 /* SEMESTRES */
 
 #app {
-  width: 70%;
+  width: 100%;
 }
 
 .semester {
