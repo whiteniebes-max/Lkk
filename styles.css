@@ -1,0 +1,52 @@
+:root {
+  --bg: #fff6fb;
+  --card: #ffeaf2;
+  --accent: #ff6fa3;
+  --text: #3d2230;
+  --ok: #b3ffcc;
+  --blocked: #ddd;
+}
+body {
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  margin: 0;
+  color: var(--text);
+}
+header {
+  text-align: center;
+  background: #ffd7ea;
+  padding: 1rem;
+}
+.controls {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  justify-content: center;
+}
+#coursesContainer {
+  max-width: 900px;
+  margin: auto;
+  padding: 1rem;
+}
+.semester-card {
+  background: var(--card);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+}
+.course {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+  margin: 0.25rem 0;
+  border-radius: 6px;
+  background: #fff;
+}
+.course.completed { background: var(--accent); color: white; }
+.course.available { background: var(--ok); }
+.course.blocked { background: var(--blocked); color: #555; }
+footer {
+  text-align: center;
+  padding: 1rem;
+  color: #777;
+}

@@ -1,0 +1,775 @@
+{
+  "bioingenieria": [
+    {
+      "code": "001295",
+      "name": "Cálculo diferencial",
+      "prereqs": [],
+      "semester": 1,
+      "credits": ""
+    },
+    {
+      "code": "001290",
+      "name": "Álgebra lineal",
+      "prereqs": [],
+      "semester": 1,
+      "credits": ""
+    },
+    {
+      "code": "026826",
+      "name": "Biología celular",
+      "prereqs": [],
+      "semester": 1,
+      "credits": ""
+    },
+    {
+      "code": "026745",
+      "name": "Química general",
+      "prereqs": [],
+      "semester": 1,
+      "credits": ""
+    },
+    {
+      "code": "033698",
+      "name": "Introducción a la programación",
+      "prereqs": [],
+      "semester": 1,
+      "credits": ""
+    },
+    {
+      "code": "033763",
+      "name": "Introducción a la ingeniería",
+      "prereqs": [],
+      "semester": 1,
+      "credits": ""
+    },
+    {
+      "code": "001297",
+      "name": "Cálculo integral",
+      "prereqs": [
+        "001295"
+      ],
+      "semester": 2,
+      "credits": ""
+    },
+    {
+      "code": "001340",
+      "name": "Física mecánica",
+      "prereqs": [],
+      "semester": 2,
+      "credits": ""
+    },
+    {
+      "code": "033699",
+      "name": "Programación avanzada",
+      "prereqs": [
+        "033698"
+      ],
+      "semester": 2,
+      "credits": ""
+    },
+    {
+      "code": "027413",
+      "name": "Bioquímica básica",
+      "prereqs": [
+        "026745"
+      ],
+      "semester": 2,
+      "credits": ""
+    },
+    {
+      "code": "33733",
+      "name": "Proyecto de diseño en ingeniería (CDIO año 1)",
+      "prereqs": [
+        "033763"
+      ],
+      "semester": 2,
+      "credits": ""
+    },
+    {
+      "code": "001299",
+      "name": "Cálculo vectorial",
+      "prereqs": [
+        "001297"
+      ],
+      "semester": 3,
+      "credits": ""
+    },
+    {
+      "code": "001300",
+      "name": "Ecuaciones diferenciales",
+      "prereqs": [
+        "001290",
+        "001297"
+      ],
+      "semester": 3,
+      "credits": ""
+    },
+    {
+      "code": "001341",
+      "name": "Fluidos y termodinámica",
+      "prereqs": [
+        "001297",
+        "001340"
+      ],
+      "semester": 3,
+      "credits": ""
+    },
+    {
+      "code": "001261",
+      "name": "Biología molecular",
+      "prereqs": [
+        "026826",
+        "027413"
+      ],
+      "semester": 3,
+      "credits": ""
+    },
+    {
+      "code": "035759",
+      "name": "Bioinformática",
+      "prereqs": [
+        "001261",
+        "033699"
+      ],
+      "semester": 3,
+      "credits": ""
+    },
+    {
+      "code": "033732",
+      "name": "Probabilidad y estadística",
+      "prereqs": [
+        "001297"
+      ],
+      "semester": 4,
+      "credits": ""
+    },
+    {
+      "code": "023710",
+      "name": "Electricidad, magnetismo y materiales",
+      "prereqs": [
+        "001297",
+        "001340"
+      ],
+      "semester": 4,
+      "credits": ""
+    },
+    {
+      "code": "004153",
+      "name": "Señales y sistemas",
+      "prereqs": [
+        "001297",
+        "001290"
+      ],
+      "semester": 4,
+      "credits": ""
+    },
+    {
+      "code": "030894",
+      "name": "Fundamentos de circuitos eléctricos",
+      "prereqs": [
+        "033763",
+        "023710"
+      ],
+      "semester": 4,
+      "credits": ""
+    },
+    {
+      "code": "035672",
+      "name": "Fisiología de sistemas",
+      "prereqs": [
+        "026826"
+      ],
+      "semester": 4,
+      "credits": ""
+    },
+    {
+      "code": "033758",
+      "name": "Biomecánica",
+      "prereqs": [
+        "001299",
+        "001341"
+      ],
+      "semester": 5,
+      "credits": ""
+    },
+    {
+      "code": "031681",
+      "name": "Electrónica analógica y aplicaciones",
+      "prereqs": [
+        "030894"
+      ],
+      "semester": 5,
+      "credits": ""
+    },
+    {
+      "code": "037296",
+      "name": "Materiales bioingeniería",
+      "prereqs": [
+        "027413",
+        "035672"
+      ],
+      "semester": 5,
+      "credits": ""
+    },
+    {
+      "code": "033801",
+      "name": "Principios de biotecnología",
+      "prereqs": [
+        "027413"
+      ],
+      "semester": 5,
+      "credits": ""
+    },
+    {
+      "code": "033685",
+      "name": "Proyecto de diseño en bioingeniería",
+      "prereqs": [
+        "033733",
+        "001261",
+        "030894"
+      ],
+      "semester": 5,
+      "credits": ""
+    },
+    {
+      "code": "031584",
+      "name": "Análisis de sistemas dinámicos",
+      "prereqs": [
+        "001300",
+        "001341"
+      ],
+      "semester": 6,
+      "credits": ""
+    },
+    {
+      "code": "035265",
+      "name": "Instrumentación biomédica",
+      "prereqs": [
+        "031681",
+        "004153"
+      ],
+      "semester": 6,
+      "credits": ""
+    },
+    {
+      "code": "035983",
+      "name": "Bioprocesos",
+      "prereqs": [
+        "033801"
+      ],
+      "semester": 6,
+      "credits": ""
+    },
+    {
+      "code": "032842",
+      "name": "Ética, tecnología e ingeniería",
+      "prereqs": [
+        "033685"
+      ],
+      "semester": 6,
+      "credits": ""
+    },
+    {
+      "code": "002356",
+      "name": "Epistemología de la ingeniería",
+      "prereqs": [],
+      "semester": 6,
+      "credits": ""
+    },
+    {
+      "code": "C1",
+      "name": "Complementaria I",
+      "prereqs": [],
+      "semester": 6,
+      "credits": ""
+    },
+    {
+      "code": "EN1",
+      "name": "Énfasis I",
+      "prereqs": [],
+      "semester": 6,
+      "credits": ""
+    },
+    {
+      "code": "034740",
+      "name": "Imágenes médicas",
+      "prereqs": [
+        "033699",
+        "001299"
+      ],
+      "semester": 7,
+      "credits": ""
+    },
+    {
+      "code": "033992",
+      "name": "Seminario de trabajo de grado",
+      "prereqs": [
+        "033685",
+        "035759",
+        "033758",
+        "031681"
+      ],
+      "semester": 7,
+      "credits": ""
+    },
+    {
+      "code": "004175",
+      "name": "Proyecto social universitario",
+      "prereqs": [
+        "033685"
+      ],
+      "semester": 7,
+      "credits": ""
+    },
+    {
+      "code": "002476",
+      "name": "Fe y compromiso del ingeniero",
+      "prereqs": [],
+      "semester": 7,
+      "credits": ""
+    },
+    {
+      "code": "C2",
+      "name": "Complementaria II",
+      "prereqs": [],
+      "semester": 7,
+      "credits": ""
+    },
+    {
+      "code": "EN2",
+      "name": "Énfasis II",
+      "prereqs": [],
+      "semester": 7,
+      "credits": ""
+    },
+    {
+      "code": "034738",
+      "name": "Trabajo de grado",
+      "prereqs": [
+        "033992"
+      ],
+      "semester": 8,
+      "credits": ""
+    },
+    {
+      "code": "017643",
+      "name": "Derecho, constitución y responsabilidad médica",
+      "prereqs": [],
+      "semester": 8,
+      "credits": ""
+    },
+    {
+      "code": "002544",
+      "name": "Significación teológica",
+      "prereqs": [
+        "033733"
+      ],
+      "semester": 8,
+      "credits": ""
+    },
+    {
+      "code": "E1",
+      "name": "Electiva I",
+      "prereqs": [],
+      "semester": 8,
+      "credits": ""
+    },
+    {
+      "code": "E2",
+      "name": "Electiva II",
+      "prereqs": [],
+      "semester": 8,
+      "credits": ""
+    },
+    {
+      "code": "E3",
+      "name": "Electiva III",
+      "prereqs": [],
+      "semester": 8,
+      "credits": ""
+    },
+    {
+      "code": "E4",
+      "name": "Electiva IV",
+      "prereqs": [],
+      "semester": 8,
+      "credits": ""
+    },
+    {
+      "code": "C3",
+      "name": "Complementaria III",
+      "prereqs": [],
+      "semester": 8,
+      "credits": ""
+    },
+    {
+      "code": "EN3",
+      "name": "Énfasis III",
+      "prereqs": [],
+      "semester": 8,
+      "credits": ""
+    }
+  ],
+  "ciencia_datos": [
+    {
+      "code": "001449",
+      "name": "Principios de Economía",
+      "prereqs": [],
+      "semester": 1,
+      "credits": ""
+    },
+    {
+      "code": "032683",
+      "name": "Matemáticas I (Cálculo diferencial e integral)",
+      "prereqs": [],
+      "semester": 1,
+      "credits": ""
+    },
+    {
+      "code": "033518",
+      "name": "Lógica y Matemáticas Discretas",
+      "prereqs": [],
+      "semester": 1,
+      "credits": ""
+    },
+    {
+      "code": "033698",
+      "name": "Introducción a la Programación",
+      "prereqs": [],
+      "semester": 1,
+      "credits": ""
+    },
+    {
+      "code": "033514",
+      "name": "Introducción a la Ciencia de Datos",
+      "prereqs": [],
+      "semester": 1,
+      "credits": ""
+    },
+    {
+      "code": "E1",
+      "name": "Electiva 1",
+      "prereqs": [],
+      "semester": 1,
+      "credits": ""
+    },
+    {
+      "code": "015962",
+      "name": "Microeconomía",
+      "prereqs": [
+        "001449",
+        "032683"
+      ],
+      "semester": 2,
+      "credits": ""
+    },
+    {
+      "code": "001299",
+      "name": "Cálculo Vectorial",
+      "prereqs": [
+        "032683"
+      ],
+      "semester": 2,
+      "credits": ""
+    },
+    {
+      "code": "001290",
+      "name": "Álgebra Lineal",
+      "prereqs": [],
+      "semester": 2,
+      "credits": ""
+    },
+    {
+      "code": "033699",
+      "name": "Programación Avanzada",
+      "prereqs": [
+        "033698"
+      ],
+      "semester": 2,
+      "credits": ""
+    },
+    {
+      "code": "033515",
+      "name": "Curaduría y Gobernanza de Datos",
+      "prereqs": [
+        "033514"
+      ],
+      "semester": 2,
+      "credits": ""
+    },
+    {
+      "code": "E2",
+      "name": "Electiva 2",
+      "prereqs": [],
+      "semester": 2,
+      "credits": ""
+    },
+    {
+      "code": "001432",
+      "name": "Macroeconomía",
+      "prereqs": [
+        "015962"
+      ],
+      "semester": 3,
+      "credits": ""
+    },
+    {
+      "code": "030890",
+      "name": "Teoría de Probabilidad",
+      "prereqs": [
+        "001299"
+      ],
+      "semester": 3,
+      "credits": ""
+    },
+    {
+      "code": "004196",
+      "name": "Estructuras de Datos",
+      "prereqs": [
+        "033518",
+        "033699"
+      ],
+      "semester": 3,
+      "credits": ""
+    },
+    {
+      "code": "033700",
+      "name": "Bases de Datos",
+      "prereqs": [
+        "033518",
+        "033699"
+      ],
+      "semester": 3,
+      "credits": ""
+    },
+    {
+      "code": "033704",
+      "name": "Visualización de Datos",
+      "prereqs": [
+        "033514",
+        "033698"
+      ],
+      "semester": 3,
+      "credits": ""
+    },
+    {
+      "code": "033519",
+      "name": "Inferencia Estadística",
+      "prereqs": [
+        "030890"
+      ],
+      "semester": 4,
+      "credits": ""
+    },
+    {
+      "code": "E3",
+      "name": "Electiva 3",
+      "prereqs": [],
+      "semester": 4,
+      "credits": ""
+    },
+    {
+      "code": "033701",
+      "name": "Principios de Desarrollo de Software",
+      "prereqs": [
+        "033700"
+      ],
+      "semester": 4,
+      "credits": ""
+    },
+    {
+      "code": "004084",
+      "name": "Introducción a la Inteligencia Artificial",
+      "prereqs": [
+        "004196"
+      ],
+      "semester": 4,
+      "credits": ""
+    },
+    {
+      "code": "001505",
+      "name": "Constitución Política",
+      "prereqs": [],
+      "semester": 4,
+      "credits": ""
+    },
+    {
+      "code": "001377",
+      "name": "Administración",
+      "prereqs": [],
+      "semester": 5,
+      "credits": ""
+    },
+    {
+      "code": "033520",
+      "name": "Análisis de Regresión",
+      "prereqs": [
+        "033519"
+      ],
+      "semester": 5,
+      "credits": ""
+    },
+    {
+      "code": "033762",
+      "name": "Gestión de Proyectos",
+      "prereqs": [
+        "001432"
+      ],
+      "semester": 5,
+      "credits": ""
+    },
+    {
+      "code": "033702",
+      "name": "Procesamiento de Datos a Gran Escala",
+      "prereqs": [
+        "033700"
+      ],
+      "semester": 5,
+      "credits": ""
+    },
+    {
+      "code": "033573",
+      "name": "Introducción a la Narrativa de Datos",
+      "prereqs": [
+        "033704"
+      ],
+      "semester": 5,
+      "credits": ""
+    },
+    {
+      "code": "001382",
+      "name": "Organizaciones",
+      "prereqs": [
+        "001377"
+      ],
+      "semester": 6,
+      "credits": ""
+    },
+    {
+      "code": "034912",
+      "name": "Legislación de Datos",
+      "prereqs": [],
+      "semester": 6,
+      "credits": ""
+    },
+    {
+      "code": "033521",
+      "name": "Análisis Multivariado",
+      "prereqs": [
+        "033519"
+      ],
+      "semester": 6,
+      "credits": ""
+    },
+    {
+      "code": "033703",
+      "name": "Técnicas de Aprendizaje de Máquina",
+      "prereqs": [
+        "004084",
+        "033519"
+      ],
+      "semester": 6,
+      "credits": ""
+    },
+    {
+      "code": "033773",
+      "name": "Fundamentos de Aprendizaje de Máquina",
+      "prereqs": [
+        "004084",
+        "033519"
+      ],
+      "semester": 6,
+      "credits": ""
+    },
+    {
+      "code": "033523",
+      "name": "Seminario de Trabajo de Grado",
+      "prereqs": [
+        "033521",
+        "033703"
+      ],
+      "semester": 7,
+      "credits": ""
+    },
+    {
+      "code": "033305",
+      "name": "Temas de Optimización / Lineal",
+      "prereqs": [
+        "001290",
+        "033699"
+      ],
+      "semester": 7,
+      "credits": ""
+    },
+    {
+      "code": "033746",
+      "name": "Optimización Lineal",
+      "prereqs": [
+        "001290",
+        "032683",
+        "033698"
+      ],
+      "semester": 7,
+      "credits": ""
+    },
+    {
+      "code": "C1",
+      "name": "Complementaria",
+      "prereqs": [],
+      "semester": 7,
+      "credits": ""
+    },
+    {
+      "code": "EF1",
+      "name": "Énfasis 1",
+      "prereqs": [],
+      "semester": 7,
+      "credits": ""
+    },
+    {
+      "code": "T1",
+      "name": "Teología 1",
+      "prereqs": [],
+      "semester": 7,
+      "credits": ""
+    },
+    {
+      "code": "033522",
+      "name": "Trabajo de Grado",
+      "prereqs": [
+        "033523",
+        "034912"
+      ],
+      "semester": 8,
+      "credits": ""
+    },
+    {
+      "code": "C2",
+      "name": "Complementaria",
+      "prereqs": [],
+      "semester": 8,
+      "credits": ""
+    },
+    {
+      "code": "T2",
+      "name": "Teología 2",
+      "prereqs": [],
+      "semester": 8,
+      "credits": ""
+    },
+    {
+      "code": "F1",
+      "name": "Filosofía 1",
+      "prereqs": [],
+      "semester": 8,
+      "credits": ""
+    },
+    {
+      "code": "E4",
+      "name": "Electiva 4",
+      "prereqs": [],
+      "semester": 8,
+      "credits": ""
+    }
+  ]
+}
