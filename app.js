@@ -6,6 +6,7 @@ let data = {};
 let completed = new Set(JSON.parse(localStorage.getItem("completedCourses") || "[]"));
 let userPlan = JSON.parse(localStorage.getItem("userPlan") || "null");
 
+
 // =====================================================
 //              CARGA INICIAL
 // =====================================================
@@ -13,17 +14,39 @@ let userPlan = JSON.parse(localStorage.getItem("userPlan") || "null");
 async function load() {
   data = await fetch("curricula.json").then(r => r.json());
 
+  // cargar plan guardado (si existe)
+  userPlan = JSON.parse(localStorage.getItem("userPlan") || "null");
+
+  // si no hay uno guardado → crear
   if (!userPlan) {
     userPlan = initializeUserPlan();
     preloadCompleted();
     localStorage.setItem("userPlan", JSON.stringify(userPlan));
+  } else {
+    // ✅ Si existe Semestre 0, eliminar
+    if (userPlan["Semestre 0 — ✅ Cursadas"]) {
+      delete userPlan["Semestre 0 — ✅ Cursadas"];
+    }
+    if (userPlan["Semestre 0"]) {
+      delete userPlan["Semestre 0"];
+    }
+
+    // asegurar estructura mínima
+    const base = initializeUserPlan();
+    for (let s in base) {
+      if (!userPlan[s]) userPlan[s] = base[s];
+    }
+
+    localStorage.setItem("userPlan", JSON.stringify(userPlan));
   }
+
+  document.getElementById("viewMode").onchange = render;
+
+  const cf = document.getElementById("catalogFilter");
+  if (cf) cf.onchange = render;
 
   render();
 }
-
-document.getElementById("viewMode").onchange = render;
-document.getElementById("catalogFilter").onchange = render;
 
 
 // =====================================================
@@ -43,7 +66,8 @@ function initializeUserPlan() {
   };
 }
 
-/* Marcar como cursadas SIN meterlas en semestre */
+
+/* Solo marca cursadas, NO las pone en Semestre */
 function preloadCompleted() {
   let cursadas = [
     // BioIng
@@ -58,18 +82,18 @@ function preloadCompleted() {
     // CD S3
     "001432","030890","004196","033700","033704",
 
-    // Constitución
+    // CD — Constitución
     "001505"
   ];
 
-  cursadas.forEach(code => {
-    completed.add(code);
-  });
+  cursadas.forEach(code => completed.add(code));
+
+  localStorage.setItem("completedCourses", JSON.stringify([...completed]));
 }
 
 
 // =====================================================
-//                  RENDER
+//              RENDER
 // =====================================================
 
 function render() {
@@ -85,7 +109,6 @@ function render() {
 
   // ✅ Mi plan
   if (mode === "miplan") {
-
     cat.classList.add("visible");
     cFilters.style.display = "block";
 
@@ -116,6 +139,7 @@ function render() {
 }
 
 
+
 // =====================================================
 //              CATÁLOGO
 // =====================================================
@@ -141,12 +165,24 @@ function renderCatalog() {
   });
 }
 
+
+
+// =====================================================
+//              UTIL
+// =====================================================
+
 function getAllCourses() {
-  let arr = [];
-  for (let sem in data.bioingenieria) arr.push(...data.bioingenieria[sem]);
-  for (let sem in data.cienciadatos) arr.push(...data.cienciadatos[sem]);
-  return arr;
+  let list = [];
+
+  for (let sem in data.bioingenieria) {
+    list.push(...data.bioingenieria[sem]);
+  }
+  for (let sem in data.cienciadatos) {
+    list.push(...data.cienciadatos[sem]);
+  }
+  return list;
 }
+
 
 
 // =====================================================
@@ -174,6 +210,7 @@ function displaySemesters(obj, editable) {
   }
 }
 
+
 function renderCourse(c, sem, editable) {
   let el = document.createElement("div");
   el.className = "course";
@@ -193,6 +230,7 @@ function renderCourse(c, sem, editable) {
 
   return el;
 }
+
 
 
 // =====================================================
@@ -235,6 +273,7 @@ function moveCourse(code, fromSem, toSem) {
 }
 
 
+
 // =====================================================
 //              LÓGICA
 // =====================================================
@@ -265,6 +304,7 @@ function findCourse(code) {
 }
 
 
+
 // =====================================================
 //              NUEVO SEMESTRE
 // =====================================================
@@ -275,6 +315,7 @@ function addSemester() {
   localStorage.setItem("userPlan", JSON.stringify(userPlan));
   render();
 }
+
 
 
 // START
