@@ -4,30 +4,26 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Malla Curricular Rosita — Planner</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
-
   <h1>🌸 Malla Curricular Rosita — Planner 🌸</h1>
 
-  <div class="top-controls">
+  <div id="controls">
     <select id="viewMode">
-      <option value="miplan">Mi plan ✨</option>
       <option value="bioingenieria">Bioingeniería</option>
       <option value="cienciadatos">Ciencia de Datos</option>
+      <option value="miplan">Mi plan ✨</option>
     </select>
   </div>
 
-  <!-- ✅ layout principal -->
-  <div id="main-layout">
+  <div id="layout">
 
-    <!-- ✅ Catálogo a la izquierda -->
+    <!-- ✅ CATÁLOGO SOLO PARA MI PLAN -->
     <div id="catalog">
-      <h2>Catálogo</h2>
-
-      <div id="catalog-filters">
+      <div id="catalog-filters" style="display:none">
+        <h2>Catálogo</h2>
         <select id="catalogFilter">
           <option value="all">Todas</option>
           <option value="available">Disponibles</option>
@@ -36,14 +32,16 @@
         </select>
       </div>
 
+      <!-- ✅ Aquí se cargan cursos -->
       <div id="catalog-courses"></div>
     </div>
 
-    <!-- ✅ Semestres a la derecha -->
+    <!-- ✅ Semestres -->
     <div id="app"></div>
-
   </div>
 
+  <script src="curricula.js"></script>
   <script src="app.js"></script>
+
 </body>
 </html>
