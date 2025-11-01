@@ -1,82 +1,96 @@
 :root {
-  --rosa-1: #ffedf4;
-  --rosa-2: #ffd6e9;
-  --rosa-3: #ffb3d9;
-  --rosa-4: #ff80c1;
-  --rosa-5: #ff4fa8;
-  --rosa-6: #ff1f94;
+  --fondo: #fef7fb;
 
-  --text: #4a4a4a;
+  --blanco: #ffffff;        /* NO disponible */
+  --rosa-pastel: #f6dce9;   /* disponible NO cursada */
+  --rosa-medio: #ea9ec4;    /* cursada */
+
+  --borde: #d4a5be;
+  --texto: #4a4a4a;
 }
 
 body {
-  background: var(--rosa-1);
-  color: var(--text);
-  font-family: "Poppins", Arial, sans-serif;
-  padding: 20px;
+  background: var(--fondo);
+  color: var(--texto);
+  font-family: "Poppins", sans-serif;
+  padding: 16px;
 }
 
-h1 {
-  text-align: center;
-  color: var(--rosa-6);
-}
+/* LAYOUT */
 
-#controls {
+#layout {
   display: flex;
-  justify-content: center;
-  margin: 15px;
+  gap: 15px;
 }
 
-select {
+#catalog {
+  width: 30%;
+  background: var(--rosa-pastel);
   padding: 10px;
   border-radius: 10px;
-  background: var(--rosa-3);
-  border: 2px solid var(--rosa-4);
+  border: 1px solid var(--borde);
+}
+
+#catalog h2 {
+  text-align: center;
+}
+
+/* SEMESTRES */
+
+#app {
+  width: 70%;
 }
 
 .semester {
-  padding: 10px;
-  margin: 10px;
-  border: 2px solid var(--rosa-4);
+  background: var(--rosa-pastel);
+  border: 1px solid var(--borde);
   border-radius: 12px;
-  background: var(--rosa-2);
+  padding: 10px;
+  margin-bottom: 12px;
 }
 
 .semester h2 {
-  text-align: center;
   margin-top: 0;
-  color: var(--rosa-6);
+  text-align: center;
 }
+
+
+/* CURSOS */
 
 .course {
-  background: var(--rosa-3);
-  border: 1px solid var(--rosa-4);
   border-radius: 8px;
   padding: 8px;
-  margin: 6px;
+  margin: 6px 0;
+  border: 1px solid var(--borde);
   cursor: grab;
+  transition: 0.15s;
 }
 
+/* ✅ Cursada */
 .course.completed {
-  background: var(--rosa-5);
+  background: var(--rosa-medio);
   color: white;
 }
 
+/* 💭 Disponible no cursada */
 .course.available {
-  background: var(--rosa-4);
-  color: white;
+  background: var(--rosa-pastel);
+  color: var(--texto);
 }
 
+/* 🔒 No disponible */
 .course.locked {
-  background: var(--rosa-1);
-  color: #999;
+  background: var(--blanco);
+  color: #bbb;
+  border: 1px dashed var(--borde);
 }
 
+/* Hover */
 .course:hover {
-  background: var(--rosa-6);
-  color: white;
+  transform: scale(1.03);
 }
 
+/* Drag hover visual */
 .dragover {
-  border: 3px dashed var(--rosa-6);
+  border: 2px dashed var(--rosa-medio);
 }
