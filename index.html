@@ -3,29 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Malla Curricular Rosita ✨</title>
+  <title>Malla Curricular — Rosita</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
-  <header>
-    <h1>💗 Malla Curricular Interactiva</h1>
-    <p>Bioingeniería & Ciencia de Datos</p>
-  </header>
+  <h1>🌸 Malla Curricular Rosita 🌸</h1>
 
-  <section class="controls">
-    <label>Selecciona programa:</label>
-    <select id="programSelect">
+  <div id="controls">
+    <select id="viewMode">
       <option value="bioingenieria">Bioingeniería</option>
-      <option value="ciencia_datos">Ciencia de Datos</option>
+      <option value="cienciadatos">Ciencia de Datos</option>
+      <option value="combinada">Vista combinada</option>
     </select>
-    <button id="resetBtn">Reiniciar progreso</button>
-  </section>
 
-  <section id="coursesContainer"></section>
+    <button id="exportPDF">Exportar PDF</button>
+    <button id="exportXLSX">Exportar Excel</button>
+    <button id="exportJSON">Exportar JSON</button>
+  </div>
 
-  <footer>
-    <small>Hecho con 💕</small>
-  </footer>
+  <div id="app"></div>
 
   <script src="app.js"></script>
 </body>
