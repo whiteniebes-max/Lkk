@@ -1,17 +1,42 @@
-<div id="layout">
-  
-  <!-- Catálogo -->
-  <div id="catalog">
-    <div id="catalog-filters" style="display:none">
-      <select id="catalogFilter">
-        <option value="all">Todas</option>
-        <option value="available">Disponibles</option>
-        <option value="completed">Cursadas</option>
-        <option value="locked">Bloqueadas</option>
-      </select>
-    </div>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Malla Curricular — Rosita Planner</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <h1>🌸 Malla Curricular Rosita — Planner 🌸</h1>
+
+  <div id="controls">
+    <select id="viewMode">
+      <option value="bioingenieria">Bioingeniería</option>
+      <option value="cienciadatos">Ciencia de Datos</option>
+      <option value="miplan">Mi plan ✨</option>
+    </select>
   </div>
 
-  <!-- Semestres -->
-  <div id="app"></div>
-</div>
+  <div id="layout">
+
+    <!-- Catálogo -->
+    <div id="catalog">
+      <div id="catalog-filters" style="display:none">
+        <h2>Catálogo</h2>
+        <select id="catalogFilter">
+          <option value="all">Todas</option>
+          <option value="available">Disponibles</option>
+          <option value="completed">Cursadas</option>
+          <option value="locked">Bloqueadas</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Semestres -->
+    <div id="app"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
