@@ -6,7 +6,6 @@ let data = {};
 let completed = new Set(JSON.parse(localStorage.getItem("completedCourses") || "[]"));
 let userPlan = JSON.parse(localStorage.getItem("userPlan") || "null");
 
-
 // =====================================================
 //              CARGA INICIAL
 // =====================================================
@@ -24,18 +23,12 @@ async function load() {
     localStorage.setItem("userPlan", JSON.stringify(userPlan));
   } else {
     // ✅ Si existe Semestre 0, eliminar
-    if (userPlan["Semestre 0 — ✅ Cursadas"]) {
-      delete userPlan["Semestre 0 — ✅ Cursadas"];
-    }
-    if (userPlan["Semestre 0"]) {
-      delete userPlan["Semestre 0"];
-    }
+    if (userPlan["Semestre 0 — ✅ Cursadas"]) delete userPlan["Semestre 0 — ✅ Cursadas"];
+    if (userPlan["Semestre 0"]) delete userPlan["Semestre 0"];
 
     // asegurar estructura mínima
     const base = initializeUserPlan();
-    for (let s in base) {
-      if (!userPlan[s]) userPlan[s] = base[s];
-    }
+    for (let s in base) if (!userPlan[s]) userPlan[s] = base[s];
 
     localStorage.setItem("userPlan", JSON.stringify(userPlan));
   }
@@ -47,7 +40,6 @@ async function load() {
 
   render();
 }
-
 
 // =====================================================
 //              PLAN PERSONAL
@@ -66,67 +58,61 @@ function initializeUserPlan() {
   };
 }
 
-
 /* Solo marca cursadas, NO las pone en Semestre */
 function preloadCompleted() {
   let cursadas = [
     // BioIng
-    "026745","027413",
+    "026745", "027413",
 
     // CD S1
-    "001449","032683","033518","033698","033514",
+    "001449", "032683", "033518", "033698", "033514",
 
     // CD S2
-    "015962","001299","001290","033699","033515",
+    "015962", "001299", "001290", "033699", "033515",
 
     // CD S3
-    "001432","030890","004196","033700","033704",
+    "001432", "030890", "004196", "033700", "033704",
 
     // CD — Constitución
     "001505"
   ];
 
   cursadas.forEach(code => completed.add(code));
-
   localStorage.setItem("completedCourses", JSON.stringify([...completed]));
 }
 
-
 // =====================================================
-//              RENDER
+//              RENDER PRINCIPAL
 // =====================================================
 
 function render() {
   const mode = document.getElementById("viewMode").value;
 
   const app = document.getElementById("app");
-  const miPlan = document.getElementById("mi-plan");      // <-- NUEVO
+  const miPlan = document.getElementById("mi-plan");
   const cat = document.getElementById("catalog");
   const cFilters = document.getElementById("catalog-filters");
   const cCourses = document.getElementById("catalog-courses");
 
-  // Limpiar contenedores de cursos
+  // Limpiar contenido previo
   app.innerHTML = "";
-  cCourses.innerHTML = "";
+  if (cCourses) cCourses.innerHTML = "";
 
-  // 🔹 Estado por defecto (cuando NO es "Mi Plan")
-  //    - Ocultamos todo el contenedor de Mi Plan (incluye el catálogo)
-  //    - Mostramos la malla normal
+  // 🔹 Estado base — todo oculto excepto la malla normal
   if (miPlan) miPlan.style.display = "none";
+  if (cat) cat.style.display = "none";
+  if (cFilters) cFilters.style.display = "none";
   app.style.display = "grid";
-  cat.classList.remove("visible");
-  cFilters.style.display = "none";
 
   // ======================================
-  // 🩷 MODO "MI PLAN"
+  // 🌸 MODO MI PLAN
   // ======================================
   if (mode === "miplan") {
-    // Mostrar Mi Plan (incluye catálogo) y ocultar la malla normal
+    // Mostrar Mi Plan y catálogo
     if (miPlan) miPlan.style.display = "flex";
+    if (cat) cat.style.display = "flex";
+    if (cFilters) cFilters.style.display = "block";
     app.style.display = "none";
-
-    cat.classList.add("visible");
-    cFilters.style.display = "block";
 
     renderCatalog();
     displaySemesters(userPlan, true);
@@ -134,17 +120,14 @@ function render() {
     const btn = document.createElement("button");
     btn.textContent = "➕ Agregar semestre";
     btn.onclick = () => addSemester();
-    // El botón va en el mismo contenedor donde pintas los semestres (app),
-    // pero en modo Mi Plan app está oculto. Si prefieres que se vea,
-    // cámbialo a otro contenedor dentro de #mi-plan.
-    document.getElementById("app").appendChild(btn);
+    app.appendChild(btn);
     return;
   }
 
   // ======================================
   // 💡 MODO BIOINGENIERÍA
   // ======================================
-  if (mode === "bioingenieria") {
+  if (mode === "bioingenieria" && data.bioingenieria) {
     displaySemesters(data.bioingenieria, false);
     return;
   }
@@ -152,14 +135,11 @@ function render() {
   // ======================================
   // 💡 MODO CIENCIA DE DATOS
   // ======================================
-  if (mode === "cienciadatos") {
+  if (mode === "cienciadatos" && data.cienciadatos) {
     displaySemesters(data.cienciadatos, false);
     return;
   }
 }
-
-
-
 
 // =====================================================
 //              CATÁLOGO
@@ -186,25 +166,16 @@ function renderCatalog() {
   });
 }
 
-
-
 // =====================================================
 //              UTIL
 // =====================================================
 
 function getAllCourses() {
   let list = [];
-
-  for (let sem in data.bioingenieria) {
-    list.push(...data.bioingenieria[sem]);
-  }
-  for (let sem in data.cienciadatos) {
-    list.push(...data.cienciadatos[sem]);
-  }
+  for (let sem in data.bioingenieria) list.push(...data.bioingenieria[sem]);
+  for (let sem in data.cienciadatos) list.push(...data.cienciadatos[sem]);
   return list;
 }
-
-
 
 // =====================================================
 //              SEMESTRES
@@ -231,7 +202,6 @@ function displaySemesters(obj, editable) {
   }
 }
 
-
 function renderCourse(c, sem, editable) {
   const el = document.createElement("div");
   el.className = "course";
@@ -251,8 +221,6 @@ function renderCourse(c, sem, editable) {
 
   return el;
 }
-
-
 
 // =====================================================
 //              DRAG & DROP
@@ -293,8 +261,6 @@ function moveCourse(code, fromSem, toSem) {
   render();
 }
 
-
-
 // =====================================================
 //              LÓGICA
 // =====================================================
@@ -324,8 +290,6 @@ function findCourse(code) {
   return null;
 }
 
-
-
 // =====================================================
 //              NUEVO SEMESTRE
 // =====================================================
@@ -336,8 +300,6 @@ function addSemester() {
   localStorage.setItem("userPlan", JSON.stringify(userPlan));
   render();
 }
-
-
 
 // START
 load();
