@@ -19,14 +19,11 @@ async function load() {
     localStorage.setItem("userPlan", JSON.stringify(userPlan));
   }
 
-  document.getElementById("viewMode").onchange = render;
-
-  // ✅ Solo existe si estamos en Mi plan
-  let cf = document.getElementById("catalogFilter");
-  if (cf) cf.onchange = render;
-
   render();
 }
+
+document.getElementById("viewMode").onchange = render;
+document.getElementById("catalogFilter").onchange = render;
 
 
 // =====================================================
@@ -35,7 +32,6 @@ async function load() {
 
 function initializeUserPlan() {
   return {
-    "Semestre 0 — ✅ Cursadas": [],
     "Semestre 1": [],
     "Semestre 2": [],
     "Semestre 3": [],
@@ -47,7 +43,7 @@ function initializeUserPlan() {
   };
 }
 
-/* Pre-cargar las que ya cursaste */
+/* Marcar como cursadas SIN meterlas en semestre */
 function preloadCompleted() {
   let cursadas = [
     // BioIng
@@ -67,14 +63,9 @@ function preloadCompleted() {
   ];
 
   cursadas.forEach(code => {
-    let c = findCourse(code);
-    if (c) {
-      completed.add(code);
-      userPlan["Semestre 0 — ✅ Cursadas"].push(c);
-    }
+    completed.add(code);
   });
 }
-
 
 
 // =====================================================
@@ -125,7 +116,6 @@ function render() {
 }
 
 
-
 // =====================================================
 //              CATÁLOGO
 // =====================================================
@@ -151,6 +141,12 @@ function renderCatalog() {
   });
 }
 
+function getAllCourses() {
+  let arr = [];
+  for (let sem in data.bioingenieria) arr.push(...data.bioingenieria[sem]);
+  for (let sem in data.cienciadatos) arr.push(...data.cienciadatos[sem]);
+  return arr;
+}
 
 
 // =====================================================
@@ -178,7 +174,6 @@ function displaySemesters(obj, editable) {
   }
 }
 
-
 function renderCourse(c, sem, editable) {
   let el = document.createElement("div");
   el.className = "course";
@@ -198,7 +193,6 @@ function renderCourse(c, sem, editable) {
 
   return el;
 }
-
 
 
 // =====================================================
@@ -241,7 +235,6 @@ function moveCourse(code, fromSem, toSem) {
 }
 
 
-
 // =====================================================
 //              LÓGICA
 // =====================================================
@@ -259,17 +252,6 @@ function toggleCompleted(code) {
   render();
 }
 
-function getAllCourses() {
-  let res = [];
-  ["bioingenieria","cienciadatos"].forEach(area => {
-    for (let sem in data[area]) {
-      res.push(...data[area][sem]);
-    }
-  });
-  return res;
-}
-
-
 function findCourse(code) {
   for (let sem in data.bioingenieria) {
     let c = data.bioingenieria[sem].find(x => x.code === code);
@@ -283,18 +265,16 @@ function findCourse(code) {
 }
 
 
-
 // =====================================================
 //              NUEVO SEMESTRE
 // =====================================================
 
 function addSemester() {
-  let n = Object.keys(userPlan).length;
+  let n = Object.keys(userPlan).length + 1;
   userPlan[`Semestre ${n}`] = [];
   localStorage.setItem("userPlan", JSON.stringify(userPlan));
   render();
 }
-
 
 
 // START
