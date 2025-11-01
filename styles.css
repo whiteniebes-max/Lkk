@@ -1,34 +1,39 @@
 :root {
-  --fondo: #fef7fb;
-
-  --blanco: #ffffff;        /* NO disponible (locked) */
-  --rosa-pastel: #f6dce9;   /* disponible NO cursada */
-  --rosa-medio: #ea9ec4;    /* cursada */
-
-  --borde: #d4a5be;
-  --texto: #4a4a4a;
+  --rosa-pastel: #f9d9e9;
+  --rosa-medio: #f3a8c4;
+  --rosa-fuerte: #e86ca7;
+  --white: #ffffff;
+  --gris: #7b7b7b;
+  --borde: #d8a4b8;
 }
 
 body {
-  background: var(--fondo);
-  color: var(--texto);
+  background: #fceff5;
   font-family: "Poppins", sans-serif;
-  padding: 16px;
+  padding: 20px;
+  color: #444;
 }
 
-/* LAYOUT */
+h1 {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
 
+/* Layout general */
 #layout {
   display: flex;
   gap: 15px;
 }
 
+/* ✅ catálogo collapsed */
 #catalog {
   width: 0;
   overflow: hidden;
   transition: width 0.3s;
 }
 
+/* ✅ catálogo SOLO visible en Mi plan */
 #catalog.visible {
   width: 30%;
   background: var(--rosa-pastel);
@@ -37,75 +42,30 @@ body {
   border: 1px solid var(--borde);
 }
 
-#catalog h2 {
-  text-align: center;
-}
-
-#catalogFilter {
-  width: 100%;
+/* Cursos */
+.course {
+  background: var(--rosa-pastel);
   padding: 8px;
-  border-radius: 6px;
+  border-radius: 8px;
+  margin-bottom: 6px;
   border: 1px solid var(--borde);
-  margin-bottom: 10px;
 }
 
+.course.locked {
+  background: var(--white);
+  border: 1px dashed var(--gris);
+  color: var(--gris);
+}
 
-/* SEMESTRES */
-
-#app {
-  width: 100%;
+.course.completed {
+  background: var(--rosa-medio);
+  border: 1px solid var(--rosa-fuerte);
 }
 
 .semester {
-  background: var(--rosa-pastel);
-  border: 1px solid var(--borde);
-  border-radius: 12px;
+  background: var(--white);
   padding: 10px;
-  margin-bottom: 12px;
-}
-
-.semester h2 {
-  margin-top: 0;
-  text-align: center;
-}
-
-
-/* CURSOS */
-
-.course {
   border-radius: 8px;
-  padding: 8px;
-  margin: 6px 0;
-  border: 1px solid var(--borde);
-  cursor: grab;
-  transition: 0.15s;
-}
-
-/* ✅ Cursada */
-.course.completed {
-  background: var(--rosa-medio);
-  color: white;
-}
-
-/* 💭 Disponible no cursada */
-.course.available {
-  background: var(--rosa-pastel);
-  color: var(--texto);
-}
-
-/* 🔒 No disponible */
-.course.locked {
-  background: var(--blanco);
-  color: #bbb;
-  border: 1px dashed var(--borde);
-}
-
-/* Hover */
-.course:hover {
-  transform: scale(1.03);
-}
-
-/* Drag hover visual */
-.dragover {
-  border: 2px dashed var(--rosa-medio);
+  border: 2px solid var(--rosa-fuerte);
+  margin-bottom: 15px;
 }
