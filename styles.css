@@ -69,3 +69,12 @@ h1 {
   border: 2px solid var(--rosa-fuerte);
   margin-bottom: 15px;
 }
+#app {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  max-width: 1200px;
+  margin: auto;
+  justify-content: flex-start;
+}
+
