@@ -82,7 +82,7 @@ function preloadCompleted() {
 }
 
 // =====================================================
-//              RENDER PRINCIPAL
+//              RENDER
 // =====================================================
 
 function render() {
@@ -94,33 +94,35 @@ function render() {
   const cFilters = document.getElementById("catalog-filters");
   const cCourses = document.getElementById("catalog-courses");
 
-  // Limpiar contenido previo
+  // Limpiar contenido
   app.innerHTML = "";
   if (cCourses) cCourses.innerHTML = "";
 
-  // 🔹 Estado base — todo oculto excepto la malla normal
-  if (miPlan) miPlan.style.display = "none";
+  // 🔹 Estado por defecto
   if (cat) cat.style.display = "none";
   if (cFilters) cFilters.style.display = "none";
+  if (miPlan) miPlan.style.display = "none";
   app.style.display = "grid";
 
   // ======================================
   // 🌸 MODO MI PLAN
   // ======================================
   if (mode === "miplan") {
-    // Mostrar Mi Plan y catálogo
+    // Mostrar catálogo y área de plan
     if (miPlan) miPlan.style.display = "flex";
     if (cat) cat.style.display = "flex";
     if (cFilters) cFilters.style.display = "block";
-    app.style.display = "none";
+
+    app.style.display = "grid"; // dejamos visible el mismo #app
 
     renderCatalog();
-    displaySemesters(userPlan, true);
+    displaySemesters(userPlan, true); // ✅ usa el mismo contenedor #app
 
     const btn = document.createElement("button");
     btn.textContent = "➕ Agregar semestre";
     btn.onclick = () => addSemester();
     app.appendChild(btn);
+
     return;
   }
 
@@ -147,9 +149,10 @@ function render() {
 
 function renderCatalog() {
   const container = document.getElementById("catalog-courses");
+  if (!container) return;
   container.innerHTML = "";
 
-  const filter = document.getElementById("catalogFilter").value;
+  const filter = document.getElementById("catalogFilter")?.value || "all";
   let all = getAllCourses();
 
   all = all.filter(c => {
